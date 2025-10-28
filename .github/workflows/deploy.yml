@@ -1,0 +1,36 @@
+name: Deploy Chat App DB
+
+on:
+  push:
+    branches:
+      - main  # ou la branche que tu veux déclencher
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      FERNET_KEY: ${{ secrets.FERNET_KEY }}
+      IP_SERVEUR: ${{ secrets.IP_SERVEUR }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DATABASE: ${{ secrets.DATABASE }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        run: |
+          python main.py
