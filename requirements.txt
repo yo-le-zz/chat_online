@@ -1,0 +1,6 @@
+psycopg2-binary==2.9.9
+colorama==0.4.6
+bcrypt==4.0.1
+python-dotenv==1.0.0
+cryptography==41.0.5
+sshtunnel==0.4.0
