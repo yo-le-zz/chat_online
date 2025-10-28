@@ -1,5 +1,0 @@
-psycopg2-binary
-bcrypt
-cryptography
-colorama
-python-dotenv
